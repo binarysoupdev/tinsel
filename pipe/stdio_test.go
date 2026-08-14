@@ -5,20 +5,16 @@ import (
 	"testing"
 
 	"github.com/binarysoupdev/tinsel/pipe"
-	"github.com/binarysoupdev/tinsel/rand"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestStdioPipeInputAndOutput(t *testing.T) {
 	//-- arrange
-	const SEED = 42
-	r := rand.New(SEED)
+	const PROMPT = "Prompt: "
+	const INPUT = "input"
 
-	PROMPT := r.ASCII(10)
-	INPUT := r.ASCII(15)
-
-	PRE_INPUT := r.ASCII(30)
-	POST_INPUT := r.ASCII(30)
+	const PRE_INPUT = "prefix"
+	const POST_INPUT = "postfix"
 
 	io := pipe.OpenStdio(1, 3, false)
 	defer io.Close()
@@ -44,11 +40,8 @@ func TestStdioPipeInputAndOutput(t *testing.T) {
 
 func TestStdioPipeWithEcho(t *testing.T) {
 	//-- arrange
-	const SEED = 42
-	r := rand.New(SEED)
-
-	PROMPT := r.ASCII(10)
-	INPUT := r.ASCII(15)
+	const PROMPT = "Prompt: "
+	const INPUT = "input"
 
 	io := pipe.OpenStdio(1, 1, true)
 	defer io.Close()

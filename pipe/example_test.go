@@ -7,17 +7,11 @@ import (
 	"testing"
 
 	"github.com/binarysoupdev/tinsel/pipe"
-	"github.com/binarysoupdev/tinsel/rand"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestStdioPipeBasicExample(t *testing.T) {
-	// create rand object with constant seed
-	const SEED = 42
-	r := rand.New(SEED)
-
-	// create new random input string
-	INPUT := r.ASCII(15)
+	const INPUT = "input"
 
 	// open the pipe with buffer sizes of 1 and echo enabled
 	io := pipe.OpenStdio(1, 1, true)

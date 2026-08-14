@@ -7,7 +7,6 @@ import (
 	"testing"
 
 	"github.com/binarysoupdev/tinsel/pipe"
-	"github.com/binarysoupdev/tinsel/rand"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -18,11 +17,8 @@ func readStdin() string {
 
 func TestStdinPipeQueueAll(t *testing.T) {
 	//-- arrange
-	const SEED = 42
-	r := rand.New(SEED)
-
-	PROMPT := r.ASCII(10)
-	INPUTS := []string{r.ASCII(15), r.ASCII(15), r.ASCII(15)}
+	const PROMPT = "Prompt: "
+	INPUTS := []string{"input1", "input2", "input3"}
 
 	in := pipe.OpenStdin(len(INPUTS))
 	defer in.Close()
@@ -43,11 +39,8 @@ func TestStdinPipeQueueAll(t *testing.T) {
 
 func TestStdinPipeQueueOne(t *testing.T) {
 	//-- arrange
-	const SEED = 42
-	r := rand.New(SEED)
-
-	PROMPT := r.ASCII(10)
-	INPUTS := []string{r.ASCII(15), r.ASCII(15), r.ASCII(15)}
+	const PROMPT = "Prompt: "
+	INPUTS := []string{"input1", "input2", "input3"}
 
 	in := pipe.OpenStdin(1)
 	defer in.Close()
@@ -66,11 +59,8 @@ func TestStdinPipeQueueOne(t *testing.T) {
 
 func TestStdinPipeReadPrompt(t *testing.T) {
 	//-- arrange
-	const SEED = 42
-	r := rand.New(SEED)
-
-	INPUT1 := r.ASCII(15)
-	INPUT2 := r.ASCII(15)
+	const INPUT1 = "input1"
+	const INPUT2 = "input2"
 
 	in := pipe.OpenStdin(1)
 	defer in.Close()

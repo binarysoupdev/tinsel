@@ -6,16 +6,12 @@ import (
 	"testing"
 
 	"github.com/binarysoupdev/tinsel/pipe"
-	"github.com/binarysoupdev/tinsel/rand"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestStdoutPipePrintOnce(t *testing.T) {
 	//-- arrange
-	const SEED = 42
-	r := rand.New(SEED)
-
-	OUTPUT := []string{r.ASCII(15), r.ASCII(15), r.ASCII(15)}
+	OUTPUT := []string{"input1", "input2", "input3"}
 
 	out := pipe.OpenStdout(len(OUTPUT))
 	defer out.Close()
@@ -33,10 +29,7 @@ func TestStdoutPipePrintOnce(t *testing.T) {
 
 func TestStdoutPipePrintMany(t *testing.T) {
 	//-- arrange
-	const SEED = 42
-	r := rand.New(SEED)
-
-	OUTPUT := []string{r.ASCII(15), r.ASCII(15), r.ASCII(15)}
+	OUTPUT := []string{"input1", "input2", "input3"}
 
 	out := pipe.OpenStdout(1)
 	defer out.Close()
