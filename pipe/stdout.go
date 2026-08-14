@@ -39,4 +39,5 @@ func (p StdioPipe) outputLoop() {
 	for scanner.Scan() {
 		p.outBuffer <- scanner.Text()
 	}
+	_ = scanner.Err()
 }
